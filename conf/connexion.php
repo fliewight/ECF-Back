@@ -6,5 +6,5 @@ catch(Exception $e) {
 	echo $e->getMessage();
 	exit;
 }
-$db->exec('SET NAMES utf8');
+
 ?>

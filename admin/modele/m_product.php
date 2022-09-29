@@ -1,5 +1,5 @@
 <?php
-class ProductAdmin
+class AdminProduct
 {
 	private $addProduct_req;
 	private $viewProduct_req;
@@ -11,7 +11,7 @@ class ProductAdmin
 
 	public function __construct($db)
 	{
-		$this->addProduct_req = $db->prepare("INSERT INTO `product` (`name`,` description`, `price`, `slug`, `creation_date`, `colors_list`, `image`, `promotion`, `category_id`) VALUES (`:name`, `:description`, `:price`,`:slug`, `:creation_date`, `:colors_list`, :image, :promotion, :category_id");
+		$this->addProduct_req = $db->prepare("INSERT INTO product (name, description, price, slug, creation_date, colors_list, image, promotion, category_id) VALUES (:name, :description, :price,:slug, :creation_date, :colors_list, :image, :promotion, :category_id)");
 		$this->viewProduct_req = $db->prepare("SELECT name, description, price, slug, colors_list, promotion FROM product WHERE id = :id");
 		$this->viewAllProducts_req = $db->prepare("SELECT image, name, description, price, id FROM product ORDER BY id");
 		$this->updateProduct_req = $db->prepare("UPDATE product SET name = :name, description = :description, price = :price, slug = :slug, colors_list = :colors_list, promotion = :promotion WHERE id = :id");

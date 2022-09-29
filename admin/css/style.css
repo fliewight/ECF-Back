@@ -3485,3 +3485,8 @@ ul.chat-available-user li a:hover {
 #copyrights a {
   color: #fff;
 }
+
+#success-registration {
+    margin: 0 auto;
+    width: 68%;
+}

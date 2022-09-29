@@ -8,6 +8,7 @@ require ('conf/functions.php');
 require ('modele/m_home.php');
 require ('modele/m_category.php');
 require ('modele/m_product.php');
+require ('modele/m_user.php');
 
 // En-tête
 include_once ('layouts/header.php');
