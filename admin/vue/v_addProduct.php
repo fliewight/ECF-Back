@@ -54,7 +54,7 @@
                                     
 
                                 <?php 
-                                    if (isset($_GET['validate'])):
+                                    if (isset($_GET['action'])):
                                         // On récupère les données du formulaire
                                         $name = $_POST['name'] ?? null;
                                         $description = $_POST['description'] ?? null;

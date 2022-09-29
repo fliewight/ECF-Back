@@ -63,8 +63,14 @@ RewriteRule (.*) - [F]
 # URL REWRITING
 RewriteRule ^produits$ index.php?vue=v_products.php [L]
 RewriteRule ^produits/supprimer/([0-9]+)$ index.php?vue=v_deleteProduct.php&id=$1 [L]
-RewriteRule ^produits/supprimer/([0-9]+)/action$ index.php?vue=v_deleteProduct.php&id=$1&validate [L]
+RewriteRule ^produits/supprimer/([0-9]+)/action$ index.php?vue=v_deleteProduct.php&id=$1&action [L]
 RewriteRule ^produits/modifier/([0-9]+)$ index.php?vue=v_updateProduct.php&id=$1 [L]
-RewriteRule ^produits/modifier/([0-9]+)/update$ index.php?vue=v_addProduct.php [L]
+RewriteRule ^produits/modifier/([0-9]+)/update$ index.php?vue=v_updateProduct.php&id=$1&update [L]
 RewriteRule ^produits/creer$ index.php?vue=v_addProduct.php [L]
 RewriteRule ^produits/creer/action$ index.php?vue=v_addProduct.php&action [L]
+
+# On interdit l'accès au répertoire "admin" : protégé par login et mot de passe
+AuthName "Administration"
+AuthType Basic
+AuthUserFile "C:\xampp\htdocs\ECF-Back\admin\.htpasswd"
+Require valid-user

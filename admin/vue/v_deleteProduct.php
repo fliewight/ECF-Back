@@ -6,11 +6,11 @@
                         <div class="row">
                             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                                 <?php
-                                    if (isset($_GET['id']) && !isset($_GET['validate'])):
+                                    if (isset($_GET['id']) && !isset($_GET['action'])):
                                         echo "<p>Voulez-vous vraiment supprimer le produit n°".$_GET['id']." ?</p>";
                                 ?>
                                 <!--<form method="post" action="index.php?vue=v_deleteProduct.php&id=<?= $_GET['id']; ?>&validate">-->
-                                <form method="post" action="<?= URL_BACK ?>produits/supprimer/<?= $_GET['id']; ?>&validate">
+                                <form method="post" action="<?= URL_BACK ?>produits/supprimer/<?= $_GET['id']; ?>/action">
                                     <input type="submit" name="yes" value="Oui">
                                 </form>
                                 <hr />
@@ -18,7 +18,7 @@
                                 <?php endif; ?>
 
                                 <?php
-                                    if (isset($_GET['id']) && isset($_GET['validate'])):
+                                    if (isset($_GET['id']) && isset($_GET['action'])):
                                         // On supprime le produit de la BDD
                                         $id = $_GET['id'];
                                         

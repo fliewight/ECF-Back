@@ -93,7 +93,7 @@
     <div class="row">
         <div class="col">
             <div class="card mb-4">
-                <div class="card-header bg-primary text-white"><i class="fa fa-envelope"></i> Contactez-nous.
+                <div class="card-header bg-primary text-white"><i class="fa fa-envelope"></i> Contactez-nous
                 </div>
                 <div class="card-body">
                     <form method="post" name="contact" action="">

@@ -43,7 +43,7 @@
       <a href="index.php" class="logo"><b>E<span>commerce</span></b></a>
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="<?= URL_BACK ?>deconnexion">Déconnexion</a></li>
+          <li><a class="logout" href="#">Déconnexion</a></li>
         </ul>
       </div>
     </header>
@@ -57,7 +57,7 @@
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
           <li class="mt">
-            <a href="index.php">
+            <a href="<?= URL_BACK ?>index.php">
               <i class="fa fa-dashboard"></i>
               <span>Dashboard</span>
             </a>
