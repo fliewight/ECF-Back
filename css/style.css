@@ -78,6 +78,12 @@ footer a {
     text-decoration: none;
 }
 
+#welcome {
+    color: #fff;
+    margin: 8px;
+    margin-left: 20px;
+}
+
 @media (min-width: 576px) {
     .jumbotron {
         padding: 4rem 2rem;

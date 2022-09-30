@@ -41,11 +41,6 @@
     <header class="header black-bg">
       <!--logo start-->
       <a href="index.php" class="logo"><b>E<span>commerce</span></b></a>
-      <div class="top-menu">
-        <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="#">Déconnexion</a></li>
-        </ul>
-      </div>
     </header>
     <!--header end-->
     <!-- **********************************************************************************************************************************************************

@@ -104,12 +104,8 @@
                                                 if ($data['id']) $id = $data['id'];
                                             }
 
-
-                                            //echo $name." - ".$description." - ".$price." - ".$slug." - ".$date." - ".$colors_list." - ".$image." - ".$promotion." - ".$id;
-
-
                                             // On enregistre dans la BDD
-                                            $u = new ProductAdmin($db);
+                                            $p = new ProductAdmin($db);
                                             $res = $p->addProduct($name, $description, $price, $slug, $date, $colors_list, $image, $promotion, $id);
                                             // On affiche le résultat
                                             if($res==1) echo "<p class='success'>Le produit a bien été ajouté.</p><hr />";

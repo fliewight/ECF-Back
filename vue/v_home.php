@@ -22,7 +22,7 @@
                     foreach ($h->getRandomProduct() as $data)
                     {
                         echo "<div class='carousel-item'>";
-                            if($data['image']) echo "<img src='".$data['image']."'>";
+                            if($data['image']) echo "<img class='d-block w-100' src='".$data['image']."'>";
                         echo "</div>";
                     }
                     ?>

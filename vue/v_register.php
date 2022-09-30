@@ -13,9 +13,12 @@
 
 <?php
 if(isset($_GET['validation'])):
-    $email = $_POST['email'] ?? null;
-    $password = $_POST['password'] ?? null;
-    $passwordVerification = $_POST['passwordVerification'] ?? null;
+    $success = false;
+
+    $email = htmlspecialchars($_POST['email']) ?? null;
+    $name = htmlspecialchars($_POST['name']) ?? null;
+    $password = htmlspecialchars($_POST['password']) ?? null;
+    $passwordVerification = htmlspecialchars($_POST['passwordVerification']) ?? null;
 
     $errors = [];
 
@@ -39,10 +42,17 @@ if(isset($_GET['validation'])):
         $errors[] = "Les mots de passe ne sont pas identiques.<br>";
     }
 
+    if (empty($name)) {
+        $errors[] = "Le nom n'a pas été saisi.<br>";
+    }
+
     // On vérifie que l'email n'xiste pas dans la BDD
-    $p = new AdminProduct($db);
-    $res = $p->addProduct($name, $description, $price, $slug, $date, $colors_list, $image, $promotion, $id);
+    $u = new User($db);
+    $res = $u->verifEmailRegister($email);
     
+    if ($res == 1) {
+        $errors[] = "Vous avez déjà un compte";
+    }
 
     if (empty($errors)) {
         $success = true;
@@ -51,7 +61,7 @@ if(isset($_GET['validation'])):
             foreach ($errors as $error) {
                 echo $error;
             }
-        echo "</div><hr />";
+        echo "</div>";
     }
 
     if ($success) {
@@ -60,10 +70,14 @@ if(isset($_GET['validation'])):
 
         // On enregistre les données dans la BDD
         $u = new User($db);
-        $res = $u->addUser($email, $password);
+        $res = $u->addUser($email, $name, $password);
         
         // On affiche le message
-        if ($res == 1) echo "<div id='succes-registration' class='d-flex justify-content-center p-3 mb-2 bg-success text-white'>Félicitations, votre compte a été créé</div><hr />";
+        if ($res == 1) {
+            echo "<div id='succes-registration' class='d-flex justify-content-center p-3 mb-2 bg-success text-white'>Félicitations, votre compte a été créé</div>";
+            // On le redirige vers l'accueil
+            header('Refresh: 3; URL='.URL.'');
+        }
     }
 endif;
 ?>
@@ -81,6 +95,10 @@ endif;
                             <label for="email">Adresse e-mail (login)</label>
                             <input type="text" class="form-control" id="email" name="email" placeholder="Votre email">
                             <small id="emailHelp" class="form-text text-muted">Nous ne partagerons pas votre email.</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="name">Nom</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Votre nom">
                         </div>
                         <div class="mb-3">
                             <label for="name">Mot de passe</label>

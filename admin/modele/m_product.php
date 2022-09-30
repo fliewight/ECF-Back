@@ -1,5 +1,5 @@
 <?php
-class AdminProduct
+class ProductAdmin
 {
 	private $addProduct_req;
 	private $viewProduct_req;

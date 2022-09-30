@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<?php session_start(); ?>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <!-- Site meta -->
@@ -51,11 +52,21 @@
 
             <ul class="navbar-nav pl-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Connexion</a>
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <p id="welcome">Bienvenue <?= $name ?>!</p>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php?vue=v_deconnexion.php">Déconnexion</a>
+                        </li>
+                    <?php endif; ?>
+                </li>
+                <?php if (!isset($_SESSION['user'])): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?vue=v_register.php">Inscription</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Inscription</a>
+                    <a class="nav-link" href="index.php?vue=v_connexion.php">Connexion</a>
                 </li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>
